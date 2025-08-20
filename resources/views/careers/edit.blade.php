@@ -57,7 +57,7 @@
                             <div class="mb-2">
                                 <label for="description" class="form-label">Description <span
                                         class="text-danger">*</span></label><br>
-                                <textarea name="description" id="description" class="form-control" placeholder="Enter description" required>{{ $career->salary }}</textarea>
+                                <textarea name="description" id="description" class="form-control" placeholder="Enter description" required>{{ $career->description }}</textarea>
                             </div>
                             <div class="mb-2">
                                 <label for="status" class="form-label">Status <span

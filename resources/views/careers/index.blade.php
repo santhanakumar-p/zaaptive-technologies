@@ -6,7 +6,7 @@
 
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
-            <div class="col col-md-10">
+            <div class="col col-md-12">
 
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
