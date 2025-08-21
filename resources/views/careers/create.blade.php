@@ -17,55 +17,93 @@
                             @csrf
 
                             <div class="mb-2">
-                                <label for="category" class="form-label">Category <span
-                                        class="text-danger">*</span></label><br>
-                                <select name="category" id="category" class="form-control form-select" required>
-                                    <option selected disabled> -- select category</option>
-                                    <option value="engineering">Engineering</option>
-                                    <option value="design">Design</option>
-                                    <option value="operation">Operation</option>
+                                <label for="category" class="form-label">
+                                    Category <span class="text-danger">*</span>
+                                </label><br>
+                                <select name="category" id="category" class="form-control form-select">
+                                    <option value="" selected disabled> -- select category -- </option>
+                                    <option value="engineering" {{ old('category') == 'engineering' ? 'selected' : '' }}>
+                                        Engineering</option>
+                                    <option value="design" {{ old('category') == 'design' ? 'selected' : '' }}>Design
+                                    </option>
+                                    <option value="operation" {{ old('category') == 'operation' ? 'selected' : '' }}>
+                                        Operation</option>
                                 </select>
+
+                                @error('category')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="position" class="form-label">Position <span
                                         class="text-danger">*</span></label><br>
                                 <input type="text" name="position" id="position" class="form-control"
-                                    placeholder="Enter position" required>
+                                    value="{{ old('position') }}" placeholder="Enter position">
+
+                                @error('position')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="experience" class="form-label">Experience</label><br>
                                 <input type="text" name="experience" id="experience" class="form-control"
-                                    placeholder="Enter experience">
+                                    value="{{ old('experience') }}" placeholder="Enter experience">
+
+                                @error('experience')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="skills" class="form-label">Skills</label><br>
                                 <input type="text" name="skills" id="skills" class="form-control"
-                                    placeholder="Enter skills">
+                                    value="{{ old('skills') }}" placeholder="Enter skills">
+
+                                @error('skills')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="location" class="form-label">Location <span
                                         class="text-danger">*</span></label><br>
                                 <input type="text" name="location" id="location" class="form-control"
-                                    placeholder="Enter location" required>
+                                    value="{{ old('location') }}" placeholder="Enter location">
+
+                                @error('location')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="salary" class="form-label">Salary</label><br>
                                 <input type="text" name="salary" id="salary" class="form-control"
-                                    placeholder="Enter salary">
+                                    value="{{ old('salary') }}" placeholder="Enter salary">
+
+                                @error('salary')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="description" class="form-label">Description <span
                                         class="text-danger">*</span></label><br>
-                                <textarea name="description" id="description" class="form-control" placeholder="Enter description" required></textarea>
+                                <textarea name="description" id="description" class="form-control" placeholder="Enter description">{{ old('description') }}</textarea>
+
+                                @error('description')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-2">
                                 <label for="status" class="form-label">Status <span
                                         class="text-danger">*</span></label><br>
-                                <select name="status" id="status" class="form-control form-select" required>
+                                <select name="status" id="status" class="form-control form-select">
                                     <option selected disabled> -- select status -- </option>
-                                    <option value="active">Active</option>
-                                    <option value="in_active">In Active</option>
+                                    <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active
+                                    </option>
+                                    <option value="in_active" {{ old('status') == 'in_active' ? 'selected' : '' }}>In
+                                        Active</option>
                                 </select>
+
+                                @error('status')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">

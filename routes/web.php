@@ -8,13 +8,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('careers', [CareerController::class, 'index'])->name('careers.index');
-Route::get('careers/create', [CareerController::class, 'create'])->name('careers.create');
-Route::post('careers', [CareerController::class, 'store'])->name('careers.store');
-Route::get('careers/{id}/edit', [CareerController::class, 'edit'])->name('careers.edit');
-Route::put('careers/{id}', [CareerController::class, 'update'])->name('careers.update');
-Route::delete('careers/{id}', [CareerController::class, 'destroy'])->name('careers.destroy');
+// Careers Routes
+Route::prefix('careers')->name('careers.')->group(function () {
 
-Route::get('zaaptive-technologies', [ZaaptiveTechnologyController::class, 'index'])->name('zaaptive-technologies.index');
-Route::get('zaaptive-technologies/career', [ZaaptiveTechnologyController::class, 'career'])->name('zaaptive-technologies.career');
-Route::get('zaaptive-technologies/career-details', [ZaaptiveTechnologyController::class, 'careerDetail'])->name('zaaptive-technologies.career-details');
+    Route::get('/', [CareerController::class, 'index'])->name('index');
+    Route::get('/create', [CareerController::class, 'create'])->name('create');
+    Route::post('/', [CareerController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [CareerController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [CareerController::class, 'update'])->name('update');
+    Route::delete('/{id}', [CareerController::class, 'destroy'])->name('destroy');
+
+});
+
+// Zaaptive Technology Routes
+Route::prefix('zaaptive-technologies')->name('zaaptive-technologies.')->group(function () {
+
+    Route::get('/', [ZaaptiveTechnologyController::class, 'index'])->name('index');
+    Route::get('/career', [ZaaptiveTechnologyController::class, 'career'])->name('career');
+    Route::get('/career-details', [ZaaptiveTechnologyController::class, 'careerDetail'])->name('career-details');
+
+});
