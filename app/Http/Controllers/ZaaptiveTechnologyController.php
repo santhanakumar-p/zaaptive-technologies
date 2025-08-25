@@ -13,15 +13,17 @@ class ZaaptiveTechnologyController extends Controller
 
     public function career()
     {
-        $engineerings = Career::where('category', 'engineering')->select('id', 'category', 'position', 'location', 'description', 'experience', 'skills', 'salary', 'status')->get();
-        $designs = Career::where('category', 'design')->select('id', 'category', 'position', 'location', 'description', 'experience', 'skills', 'salary', 'status')->get();
-        $operations = Career::where('category', 'operation')->select('id', 'category', 'position', 'location', 'description', 'experience', 'skills', 'salary', 'status')->get();
+        $engineerings = Career::where('category', 'engineering')->select('id', 'category', 'position', 'location', 'experience', 'skills', 'salary', 'status')->get();
+        $designs = Career::where('category', 'design')->select('id', 'category', 'position', 'location', 'experience', 'skills', 'salary', 'status')->get();
+        $operations = Career::where('category', 'operation')->select('id', 'category', 'position', 'location', 'experience', 'skills', 'salary', 'status')->get();
 
         return view('zaaptive-technologies.career', compact('engineerings', 'designs', 'operations'));
     }
 
-    public function careerDetail()
+    public function careerDetail(int $id)
     {
-        return view('zaaptive-technologies.career-details');
+        $career = Career::findOrFail($id);
+
+        return view('zaaptive-technologies.career-details', compact('career'));
     }
 }

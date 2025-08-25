@@ -74,7 +74,7 @@
                             <span
                                 class="px-3 py-1 bg-purple-600 text-xs rounded">{{ Str::title($engineering->skills) }}</span>
                         </div>
-                        <a href="{{ route('zaaptive-technologies.career-details') }}"
+                        <a href="{{ route('zaaptive-technologies.career-details', $engineering->id) }}"
                             class="inline-block mt-4 px-5 py-2 bg-blue-600 rounded hover:bg-blue-700">View Details</a>
                     </div>
                 @endforeach
@@ -95,7 +95,7 @@
                             <span
                                 class="px-3 py-1 bg-purple-600 text-xs rounded">{{ Str::title($design->skills) }}</span>
                         </div>
-                        <a href="{{ route('zaaptive-technologies.career-details') }}"
+                        <a href="{{ route('zaaptive-technologies.career-details', $design->id) }}"
                             class="inline-block mt-4 px-5 py-2 bg-blue-600 rounded hover:bg-blue-700">View Details</a>
                     </div>
                 @endforeach
@@ -116,7 +116,7 @@
                             <span
                                 class="px-3 py-1 bg-purple-600 text-xs rounded">{{ Str::title($operation->skills) }}</span>
                         </div>
-                        <a href="{{ route('zaaptive-technologies.career-details') }}"
+                        <a href="{{ route('zaaptive-technologies.career-details', $operation->id) }}"
                             class="inline-block mt-4 px-5 py-2 bg-blue-600 rounded hover:bg-blue-700">View Details</a>
                     </div>
                 @endforeach

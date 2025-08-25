@@ -84,7 +84,7 @@
                             <div class="mb-2">
                                 <label for="description" class="form-label">Description <span
                                         class="text-danger">*</span></label><br>
-                                <textarea name="description" id="description" class="form-control" placeholder="Enter description">{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" class="form-control summernote" placeholder="Enter description">{{ old('description') }}</textarea>
 
                                 @error('description')
                                     <span class="text-danger small">{{ $message }}</span>
