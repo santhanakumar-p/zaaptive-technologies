@@ -13,7 +13,9 @@ class ApplyJobController extends Controller
      */
     public function index()
     {
-        //
+        $applyJobs = ApplyJob::with('career:id,category')->select('id', 'careers_id', 'name', 'email', 'phone_no', 'created_at')->get();
+
+        return view('apply-jobs.index', compact('applyJobs'));
     }
 
     /**
@@ -21,7 +23,7 @@ class ApplyJobController extends Controller
      */
     public function create()
     {
-        $careers = Career::select('id', 'category', 'position')->get();
+        $careers = Career::select('id', 'category')->get();
 
         return view('apply-jobs.create', compact('careers'));
     }
@@ -55,19 +57,14 @@ class ApplyJobController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(int $id)
     {
-        //
+        $applyJobs = ApplyJob::findOrFail($id);
+        $careers = Career::select('id', 'category')->get();
+
+        return view('apply-jobs.edit', compact('applyJobs', 'careers'));
     }
 
     /**
@@ -75,7 +72,29 @@ class ApplyJobController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        //
+        $applyJobs = ApplyJob::findOrFail($id);
+
+        $request->validate([
+            'careers_id' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone_no' => 'required|string|max:20',
+            'summary' => 'nullable|string|max:500',
+            'resume' => 'required',
+        ]);
+
+        $resumePath = $request->file('resume')->store('resumes', 'public');
+
+        $applyJobs->update([
+            'careers_id' => $request->input('careers_id'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone_no' => $request->input('phone_no'),
+            'summary' => $request->input('summary'),
+            'resume' => $resumePath,
+        ]);
+
+        return redirect()->route('apply-jobs.index')->with('success', 'Career updated successfully!');
     }
 
     /**
@@ -83,6 +102,9 @@ class ApplyJobController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $applyJob = ApplyJob::findOrFail($id);
+        $applyJob->delete();
+
+        return redirect()->route('apply-jobs.index')->with('success', 'Career deleted successfully!');
     }
 }

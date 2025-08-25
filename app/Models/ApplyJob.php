@@ -14,4 +14,9 @@ class ApplyJob extends Model
         'summary',
         'resume',
     ];
+
+    public function career()
+    {
+        return $this->belongsTo(Career::class, 'careers_id');
+    }
 }

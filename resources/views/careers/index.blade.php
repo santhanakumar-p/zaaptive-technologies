@@ -37,7 +37,7 @@
                             <tbody>
                                 @foreach ($careers as $career)
                                     <tr>
-                                        <td>{{ $career->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ Str::title($career->category) }}</td>
                                         <td>{{ Str::title($career->position) }}</td>
                                         <td>{{ Str::title($career->location) }}</td>
